@@ -91,14 +91,14 @@ firebase.auth().onAuthStateChanged(async function(user) {
          
 
         // Build the URL for our buy API
-        let url = `/.netlify/functions/buyNft?nftId=${nftId}&userId=${user.uid}`
+        let url = `/.netlify/functions/buyNft?nftId=${nftId}&userId=${user.uid}&oldOwnerId=${nft.ownerId}&price=${nft.price}`
 
         // Fetch the url, wait for a response, store the response in memory
         let response = await fetch(url)
 
         console.log(response)
-        // refresh the page
-        location.reload()
+        // redirect to account page
+        document.location.href = `account.html`
         
       })
     
